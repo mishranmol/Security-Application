@@ -20,7 +20,7 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    //the below line means that the email should be unique so we are putting unique constraint
+    //email should be unique , hence unique constraint
     @Column(unique = true)
     private String email;
     private String password;
