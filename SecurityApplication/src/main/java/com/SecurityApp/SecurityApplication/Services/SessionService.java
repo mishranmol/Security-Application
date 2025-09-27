@@ -27,55 +27,30 @@ public class SessionService {
     //creating a new Session
     public void generateNewSession(User user , String refreshToken){
 
-        //firstly get all the sessions mapped to this particular user , we will not use refreshToken to find the list of sessions
-        //because the refreshToken for every user logged In will be different . example -> I have shared my login credentials of netflix
-        // with akshat and max 2 people can use netflix at a time so when I will login my refreshToken will be different and when akshat
-        // will login using my credentials his refreshToken will be different but in DB it will show 2 active session mapped to my Id.
-        //InShort -> User1 and User2 using the same credentials to login = two separate sessions → two distinct refresh tokens.
-        //findByUser(user) this method will be created inside the session repository
+ 
         List<Session> userSessions = sessionRepository.findByUser(user);
 
-        //checking the size of userSessions list, we have taken 2 because we want only 2 sessions active per user at a time .
-        // == 2 means we have reached the max.limit already so we have to remove the least recently loggedIn session
+
         if(userSessions.size() == SESSION_LIMIT){
 
-        //for finding the least recently used session sort the sessions list
-        //sorting the session list using getLastUsedAt .
-            // This line -> userSessions.sort(Comparator.comparing(Session::getLastUsedAt));
-            // sorts the userSessions list in-place, ordering Session objects by their lastUsedAt timestamp in ascending order.
-            //Comparator.comparing(Session::getLastUsedAt) creates a comparator that extracts the lastUsedAt field (which must be Comparable) from each session.
-            //.sort(...) applies this comparator to reorder the list accordingly.
 
-            //we can also write this way = userSessions.sort(Comparator.comparing( x -> x.getLastUsedAt() ) ;
-            userSessions.sort(Comparator.comparing(Session::getLastUsedAt));
+        userSessions.sort(Comparator.comparing(Session::getLastUsedAt));
 
 
-            //fetching the least recently used Session
-            Session leastRecentlyUsedSession = userSessions.get(0);
-            //.get(0) -> my code
-            //we could have also used userSessions.getFirst(); -> anuj bhaiya code
+        Session leastRecentlyUsedSession = userSessions.get(0);
 
-            //deleting the least recently used session from the DB
-            sessionRepository.delete(leastRecentlyUsedSession);
+
+        sessionRepository.delete(leastRecentlyUsedSession);
 
         }
 
-
-
-        //creating a new Session , this is my method of creating a session
+        //Creating a new Session 
         Session newSession = new Session(user,refreshToken);
         sessionRepository.save(newSession);
 
-        //this is anujbhaiya way of creating a session , and also we have to add @builder annotation above sessionEntity to build session
-       // Session newSession = Session.
-         //       builder()
-           //     .User(user)
-             //   .refreshToken(refreshToken)
-               // .build;
-
     }
 
-    //inside this we will check that is there is a session according this refreshToken inside our DB or not .
+    //In this we will check that is there a session according to this refreshToken inside the DB or not .
     public void validateSession(String refreshToken){
 
         //if there is a session for this refreshToken means this is a valid session
