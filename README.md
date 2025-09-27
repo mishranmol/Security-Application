@@ -55,10 +55,12 @@ An Admin can access both user and admin-level routes.
 
 
 
+<h3><b>🛠️ Tech Stack</b></h3>
 
-<p><span style="font-size:16px;"><b>Backend Framework:</b></span> Spring Boot</p>
-<p><span style="font-size:16px;"><b>Security:</b></span> Spring Security, JWT</p>
-<p><span style="font-size:16px;"><b>Database:</b></span> H2 (in-memory)</p>
-<p><span style="font-size:16px;"><b>Build Tool:</b></span> Maven</p>
-<p><span style="font-size:16px;"><b>Language:</b></span> Java</p>
+<p><b>Backend Framework:</b> Spring Boot</p>
+<p><b>Security:</b> Spring Security, JWT</p>
+<p><b>Database:</b> H2 (in-memory)</p>
+<p><b>Build Tool:</b> Maven</p>
+<p><b>Language:</b> Java</p>
+
 
