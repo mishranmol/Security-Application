@@ -55,6 +55,18 @@ An Admin can access both user and admin-level routes.
 -> Ensures all exceptions are caught in a centralized place and converted into clear, consistent error responses.
 
 
+<h3><b> 📂Project Structure</b></h3>
+src/main/java/com/example/securityapplication
+│
+├── controller    # REST APIs 
+├── model         # Entities and DTOs
+├── service       # Business logic
+├── repository    # Data access layer
+├── config        # Security configurations
+└── exception     # Global exception handler
+
+
+
 
 <h3><b>🛠️ Tech Stack</b></h3>
 
