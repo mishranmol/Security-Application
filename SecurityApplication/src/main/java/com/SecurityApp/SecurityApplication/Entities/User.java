@@ -14,12 +14,6 @@ import java.util.stream.Collectors;
 
 @Table(name = "Userstable")
 @Entity
-//@Data is used for getter and setter But it's not working in my code that is why I am using external getter,setter and constructor
-//@Data
-//@Getter
-//@Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
 public class User implements UserDetails {
 
     @Id
@@ -31,26 +25,11 @@ public class User implements UserDetails {
     private String email;
     private String password;
     private String name;
-
-
-    //Note roles are known as authorities in language of SpringSecurity
-    //If we want that a user can have just a single role then use -> private Role role ;
-    //But if we want a user can have multiple roles then use  -> private Set<Role> roles ;
-    //Since Role is enum hence using @Enumerated and there are 2 ways of storing enums 1->ORDINAL(i.e -> Numbers(0,1,2) ) and 2-> String
-    //Note -> By default EnumType is ORDINAL means
-    //If we use EnumType.ORDINAL then our roles will be stored as USER is mapped to 0 , CREATOR mapped to 1 , ADMIN mapped to 2 means inside our DB
-    //it will not show USER,CREATOR,ADMIN instead it will show 0,1,2 .
-    //But since we have used EnumType.STRING hence it will be stored like USER,CREATOR,ADMIN .
-
-    //AS we are storing Role inside a Set hence will use @ElementCollection
-    //fetch = FetchType.EAGER means everytime we are fetching/getting a user we want to fetch the roles directly hence
-    // EAGER but if want to fetch the roles Later On then use FetchType.LAZY .
-
+    
 
     @Enumerated(EnumType.STRING)
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<Role> roles ;
-
 
 
     public User(Long id, String email, String password, String name,Set<Role> roles) {
@@ -102,21 +81,6 @@ public class User implements UserDetails {
     }
 
 
-
-
-
-
-    //implementing the methods of UserDetails
-
-    //this getAuthorities will return a list of GrantedAuthority.
-    //Authority means what kind of activity a user can perform .
-    //GrantedAuthority is an interface and this GrantedAuthority is implemented by simpleGrantedAuthority .
-    //.map(role -> GrantedAuthority()) means converting the role to simple GrantedAuthority
-    //role.name() so the name is coming from the enum type .
-
-    //Very Important -> Whenever we are passing the roles inside the SimpleGrantedAuthority we need to always add the role prefix(i.e-> "ROLE_") else
-    // the code will not run even though we are adding correct requestMatchers inside the WebSecurityConfig .
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles
@@ -133,7 +97,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        //note -> username in our case is email
+        // Username in our case is email
         return email;
     }
 
