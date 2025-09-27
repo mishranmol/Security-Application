@@ -17,15 +17,6 @@ public class PostController {
         this.postService = postService;
     }
 
-    // this is how we handle the exception if we try to find the post whose "postId" did not exist so the PostService throws a custom exception named
-    // ResourceNotFoundException so we have to write throws ResourceNotFoundException in method signature as written below to handle it and if we try to
-    // find post whose "postId" did not exist we will get our custom Message("Resource not found with given id"+postId") in the console .
-
-//    @GetMapping(path = "/{postId}")
-//    public PostDto getPostById(@PathVariable Long postId) throws ResourceNotFoundException {
-//            return postService.getPostById(postId);
-//    }
-
 
     @GetMapping(path = "/{postId}")
     public PostDto getPostById(@PathVariable Long postId) throws ResourceNotFoundException {
