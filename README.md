@@ -1,8 +1,16 @@
-Spring Boot Security Application
+<h1 align="center">🔐 <b>Spring Boot Security Application</b></h1>
 
-A Spring Boot Security Application implementing JWT Authentication & Authorization, role-based access control, and session management with support for Access Tokens and Refresh Tokens.
+<p align="center">
+  A Spring Boot Security Application implementing <b>JWT Authentication & Authorization</b>, 
+  <b>role-based access control</b>, and <b>session management</b> with support for 
+  <b>Access Tokens and Refresh Tokens</b>.
+</p>
 
-The project follows the MVC architecture, uses an H2 in-memory database for quick setup, and includes a Global Exception Handler to provide consistent and structured error responses.
+<p align="center">
+  The project follows the <b>MVC architecture</b>, uses an <b>H2 in-memory database</b> for quick setup, 
+  and includes a <b>Global Exception Handler</b> to provide consistent and structured error responses.
+</p>
+
 
 Features
 🔑 Authentication & Authorization
