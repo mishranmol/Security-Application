@@ -9,7 +9,5 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    //In week-3 we have studied that hibernate will convert it into corresponding SQL query
      Optional<User> findByEmail(String email);
-
 }
