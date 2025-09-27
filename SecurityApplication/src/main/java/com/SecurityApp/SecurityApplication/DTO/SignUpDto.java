@@ -57,13 +57,4 @@ public class SignUpDto {
         return roles;
     }
 
-
-
-// Note -> commenting it because jab user 1st time SignUp karega tabhi uska role decide ho jayega par agar setRoles bhi likh diya toh
-    // baad mai bhi user ka role Change kar/ho sakte hai jo ki nahi allowed hona chahiye  .
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
-
 }
