@@ -23,7 +23,7 @@ public class ApiError {
     }
 
     public ApiError(String error, HttpStatus status) {
-        this();//calling the default constructor , this method known as constructor chaining
+        this();//calling the default constructor , this is known as constructor chaining
         this.error = error;
         this.status = status;
     }
