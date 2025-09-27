@@ -9,7 +9,7 @@
 <p align="center">
   The project follows the <b>MVC architecture</b>, uses an <b>H2 in-memory database</b> for quick setup, 
   and includes a <b>Global Exception Handler</b> to provide consistent and structured error responses.
-</p>
+</p> 
 
 
 Features
