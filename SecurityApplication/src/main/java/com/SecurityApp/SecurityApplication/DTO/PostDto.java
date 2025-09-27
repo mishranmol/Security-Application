@@ -5,9 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-//added data for getters and setters
 @Data
-//these two constructors are required by jackson to convert json into PostDto class
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostDto {
