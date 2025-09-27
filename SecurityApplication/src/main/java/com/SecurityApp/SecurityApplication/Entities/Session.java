@@ -11,21 +11,17 @@ public class Session {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //this is the sessionId
+    //This is the sessionId
     private Long id;
 
-    // @CreationTimestamp
-    // The @CreationTimestamp annotation in Hibernate is used on entity fields to automatically capture the creation
-    // date/time once when the entity is first persisted.
-    // There is no need to put lastUsedAt inside constructor as @CreationTimestamp will initialize lastUsedAt when this entity will be
-    // first persisted/inserted inside the table .
+    
     @CreationTimestamp
     private LocalDateTime lastUsedAt;
 
     private String refreshToken ;
 
     @ManyToOne
-    //since in our application one user can have many sessions(2 in our application) that's why ManytoOne
+    //Since in our application one user can have many sessions that's why ManytoOne
     private User user;
 
 
@@ -34,9 +30,7 @@ public class Session {
         this.user = user;
     }
 
-    //default constructor
     public Session(){}
-
 
     public Long getId() {
         return id;
