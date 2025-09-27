@@ -12,7 +12,8 @@
 </p> 
 
 
-Features
+<h2><b>🚀 Features</b></h2>
+
 <h3><b>🔑 Authentication & Authorization</b></h3>
 
 -> Implemented JWT (JSON Web Token)–based authentication for securing API endpoints.
