@@ -27,17 +27,10 @@ public class PostService {
         this.modelMapper = modelMapper;
     }
 
-    //getPostById
+
     public PostDto getPostById(@PathVariable Long postId) throws ResourceNotFoundException {
         
-        
-// after putting the user inside the SecurityContextHolder we can get the user anywhere inside our application as
-// user is present inside the getPrincipal() method of SecurityContextHolder .
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-//don't know why the log is showing error
-//        log.info("user {}" , user);
-        
 
         PostEntity postEntity = postRepository.
                 findById(postId)
@@ -47,7 +40,7 @@ public class PostService {
 
     }
 
-    //getting All Posts
+
     public List<PostDto> getAllPosts(){
         return postRepository.
                 findAll()
@@ -55,7 +48,6 @@ public class PostService {
                 .map(postEntity -> modelMapper.map(postEntity,PostDto.class))
                 .collect(Collectors.toList());
     }
-
 
 
     public PostDto createNewPost(PostDto inputPost){
