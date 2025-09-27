@@ -10,11 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class SecurityApplicationTests {
 
-
 	private final JwtService jwtService;
 
-	//it was giving error when we were not using @Autowired , below was the reason chatgpt gave hence inserted @Autowired
-	//Spring Boot (with JUnit 5) requires explicit constructor injection for test classes:
 	@Autowired
 	SecurityApplicationTests(JwtService jwtService) {
         this.jwtService = jwtService;
