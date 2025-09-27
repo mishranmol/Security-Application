@@ -25,8 +25,7 @@ public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
-    //Injecting the passwordEncoder which we have created inside the AppConfig
-   private final PasswordEncoder passwordEncoder ;
+    private final PasswordEncoder passwordEncoder ;
 
     public UserService(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
@@ -58,19 +57,15 @@ public class UserService implements UserDetailsService {
 
     public UserDto signUp(SignUpDto signUpDto){
             Optional<User> user = userRepository.findByEmail(signUpDto.getEmail());
-             //means that if user is present already then user has to login and not signUp.
             if(user.isPresent()){
              throw new BadCredentialsException("User with the given email " + signUpDto.getEmail() + " already exists .");
         }
              User saveduser =  modelMapper.map(signUpDto,User.class);
-            //we are encoding the password using passwordEncoder before storing it inside DB and after encoding the password
-        //we will not be able to get back our original password again by any means
              saveduser.setPassword(passwordEncoder.encode(saveduser.getPassword()));
              return modelMapper.map(userRepository.save(saveduser) , UserDto.class);
     }
 
 
-    //deleting a user by Id
     public void deleteUserById(Long id) throws ResourceNotFoundException {
 
         User user = userRepository.findById(id)
