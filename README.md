@@ -16,21 +16,21 @@
 
 <h3><b>🔑 Authentication & Authorization</b></h3>
 
--> Implemented JWT (JSON Web Token)–based authentication for securing API endpoints.
+- Implemented JWT (JSON Web Token)–based authentication for securing API endpoints.
 
--> Each login request generates an Access Token (short-lived) and a Refresh Token (long-lived).
+- Each login request generates an Access Token (short-lived) and a Refresh Token (long-lived).
 
--> Access Tokens are required to access protected routes.
+- Access Tokens are required to access protected routes.
 
--> Refresh Tokens allow seamless session continuation without forcing users to re-login.
+- Refresh Tokens allow seamless session continuation without forcing users to re-login.
 
 
 
 <h3><b>👥 Role-Based Access Control</b></h3>
 
--> The application defines multiple user roles (e.g., ROLE_USER, ROLE_ADMIN, etc.).
+- The application defines multiple user roles (e.g., ROLE_USER, ROLE_ADMIN, etc.).
 
--> Different roles have access to different routes – for example:
+- Different roles have access to different routes – for example:
 
 A normal User can only access user-specific endpoints.
 
@@ -40,19 +40,19 @@ An Admin can access both user and admin-level routes.
 
 <h3><b>🔒 Session Management</b></h3>
 
--> To prevent misuse of accounts, the system enforces a maximum of two active sessions per user.
+- To prevent misuse of accounts, the system enforces a maximum of two active sessions per user.
 
--> If the same user logs in from multiple devices or browsers, only two sessions remain valid.
+- If the same user logs in from multiple devices or browsers, only two sessions remain valid.
 
--> This provides better control over user access and reduces risks from credential sharing.
+- This provides better control over user access and reduces risks from credential sharing.
 
 
 
 <h3><b>⚡ Exception Handling</b></h3>
 
--> A Global Exception Handler has been implemented using @ControllerAdvice.
+- A Global Exception Handler has been implemented using @ControllerAdvice.
 
--> Ensures all exceptions are caught in a centralized place and converted into clear, consistent error responses.
+- Ensures all exceptions are caught in a centralized place and converted into clear, consistent error responses.
 
 
 
